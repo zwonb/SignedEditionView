@@ -1,8 +1,11 @@
 package com.yidont.customview
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.yidont.customview.captcha.CaptchaActivity
+import com.yidont.customview.signededition.SignedEditionActivity
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
@@ -11,12 +14,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun reset(view: View) {
-        findViewById<SignedEditionView>(R.id.signedEditionView).reset()
+    fun signed(view: View) {
+        startActivity(Intent(this, SignedEditionActivity::class.java))
     }
 
-    fun save(view: View) {
-        val file = File(externalCacheDir, "signed.jpg")
-        findViewById<SignedEditionView>(R.id.signedEditionView).save(file)
+    fun captcha(view: View) {
+        startActivity(Intent(this, CaptchaActivity::class.java))
     }
 }
